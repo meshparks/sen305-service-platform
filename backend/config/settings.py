@@ -22,7 +22,6 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG")
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
