@@ -1,0 +1,35 @@
+=== GET / ===
+HTTP/1.1 200 OK
+Date: Sun, 15 Nov 2026 18:35:37 GMT
+Server: WSGIServer/0.2 CPython/3.14.7
+Content-Type: text/html; charset=utf-8
+X-Frame-Options: DENY
+Content-Length: 567
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+
+
+<!DOCTYPE html>
+
+=== GET /static/css/site.css ===
+HTTP/1.1 200 OK
+Date: Sun, 15 Nov 2026 18:35:37 GMT
+Server: WSGIServer/0.2 CPython/3.14.7
+Content-Type: text/css
+Content-Length: 531
+Content-Disposition: inline; filename="site.css"
+Last-Modified: Sun, 15 Nov 2026 18:34:15 GMT
+
+:root {
+  --green: #0b4d2a;
+
+=== GET /nothing-here/ ===
+HTTP/1.1 404 Not Found
+Date: Sun, 15 Nov 2026 18:35:37 GMT
+Server: WSGIServer/0.2 CPython/3.14.7
+Content-Type: text/html; charset=utf-8
+X-Frame-Options: DENY
+Content-Length: 3229
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
