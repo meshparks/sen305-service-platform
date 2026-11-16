@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-# Created my views here.
 from django.shortcuts import render
 
 
