@@ -1,0 +1,11 @@
+10 objects imported automatically (use -v 2 for details).
+
+PRIMARY 1 id
+req_cat_status_idx 1 category_id
+req_cat_status_idx 2 status
+req_priority_date_idx 1 priority
+req_priority_date_idx 2 created_at
+requests_app_service_requester_id_ea9aebb5_fk_auth_user 1 requester_id
+requests_app_servicerequest_status_01cb29e5 1 status
+req_status_due_idx 1 status
+req_status_due_idx 2 due_at

@@ -26,7 +26,9 @@ nav a {
   font-weight: 600;
 }
 
-nav a:hover { text-decoration: underline; }
+nav a:hover { 
+  text-decoration: underline; 
+}
 
 main {
   max-width: 48rem;

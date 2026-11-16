@@ -1,6 +1,28 @@
+from datetime import timedelta
+
 from django.contrib import admin
+from django.utils import timezone
 
 from .models import Category, Comment, ServiceRequest, WorkOrder
+
+
+class OverdueFilter(admin.SimpleListFilter):
+    title = "due date"
+    parameter_name = "due"
+
+    def lookups(self, request, model_admin):
+        return (("overdue", "Overdue"), ("today", "Due today"), ("none", "No due date"))
+
+    def queryset(self, request, queryset):
+        now = timezone.now()
+        if self.value() == "overdue":
+            return queryset.filter(due_at__lt=now).exclude(status__in=["resolved", "closed"])
+        if self.value() == "today":
+            start = now.replace(hour=0, minute=0, second=0, microsecond=0)
+            return queryset.filter(due_at__gte=start, due_at__lt=start + timedelta(days=1))
+        if self.value() == "none":
+            return queryset.filter(due_at__isnull=True)
+        return queryset
 
 
 @admin.register(Category)
@@ -17,9 +39,9 @@ class CommentInline(admin.TabularInline):
 
 @admin.register(ServiceRequest)
 class ServiceRequestAdmin(admin.ModelAdmin):
-    list_display = ("title", "category", "requester", "priority", "status", "created_at")
-    list_filter = ("status", "priority", "category")
-    search_fields = ("title", "description", "location")
+    list_display = ("title", "category", "requester", "priority", "status", "due_at", "resolved_at", "created_at")
+    list_filter = ("status", "priority", "category", OverdueFilter)
+    search_fields = ("title", "description", "location", "resolution_summary")
     inlines = [CommentInline]
 
 
